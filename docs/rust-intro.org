@@ -1,0 +1,11 @@
+#+title:  Rust Introduction
+#+author: Klef Learning
+#+date:   2025.01.17
+
+* Rust Intro
+
+** Introduction
+
+Rust is powerful programming language without GC: Gavage Collection.
+
+** Hello World
