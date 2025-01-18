@@ -8,4 +8,11 @@
 
 Rust is powerful programming language without GC: Gavage Collection.
 
+
 ** Hello World
+
+#+BEGIN_SRC rust
+fn main() {
+  println!("Hello, World!")
+}
+#+END_SRC
