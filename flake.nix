@@ -2,7 +2,7 @@
   description = "A flake for: Klef Learning | 401 Rust Introduction";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    overlays.default = import ./overlay.nix
 		fenix = {
 			url = "github:nix-community/fenix";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -14,9 +14,10 @@
 			let
 				toolchain = fenix.packages.${system}.fromToolchainFile {
 					file = ./rust-toolchain.toml;
-					sha256 = "sha256-OfhkF+u/biRVDAMcusUFs0m7YFr1z+KZxnHBFHLxIsE=";
+					sha256 = "sha256-0Ww96eIhjM7rfKIAn79Gr591wG/QgwPzzcRMKD0r4gU=
+";
 				};
-				pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs { inherit system; overlays = [overlays.default];
 			in
 			{
 				devShells.default = pkgs.mkShell {
@@ -25,6 +26,7 @@
 						toolchain
 						git
 						lazygit
+            emacsForLec
 					];
 					shellHook = ''
 						echo "'Klef Learning | 401 Rust Introduction' Develop Environment is Activated"
