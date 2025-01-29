@@ -1,5 +1,5 @@
 [toolchain]
 channel = "beta"
-components = ["rustc", "cargo", "rust-std"]
+components = ["rustc", "cargo", "rust-std", "rust-script"]
 profile = "minimal"
 targets = []
