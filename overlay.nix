@@ -8,6 +8,10 @@ final: prev: {
         (rust .t)
       )
     )
+    (require 'eglot)
+    (add-hook 'rust-mode-hook 'eglot-ensure)
+    (autoload 'rust-mode "rust-mode" nil t)
+    (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
   '';
   emacsForLec = prev.emacs-nox.pkgs.withPackages (epkgs: (with epkgs.melpaStablePackages; [
     (prev.runCommand "default.el" {} ''
@@ -17,6 +21,8 @@ final: prev: {
     catppuccin-theme
     rainbow-delimiters
     ddskk
+    rust-mode
     epkgs.ob-rust
+    epkgs.eglot
   ]));
 }
