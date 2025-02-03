@@ -31,7 +31,7 @@ Emacserは上記事項に注意されたい。
 #+NAME: Hello, World!
 #+BEGIN_SRC rust
 fn main() {
-  println!("Hello, World!")
+  println!("Hello, Rust!")
 }
 #+END_SRC
 

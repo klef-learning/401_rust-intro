@@ -29,6 +29,7 @@
 						lazygit
             emacsForLec
             rust-script
+            rust-analyzer
 					];
 					shellHook = ''
 						echo "'Klef Learning | 401 Rust Introduction' Develop Environment is Activated"
