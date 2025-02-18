@@ -1,0 +1,48 @@
+# 401 Rust Introduction
+
+by Klef Learning
+
+日本語▼へんかん
+
+## About
+
+This tutorial is designed for Rust beginners to provide an introduction to using Rust.
+Next: 402 Rust Basic Course
+This tutorial has Japanese version ONLY. English version is not available yet.
+
+## Getting Started
+
+There are 4 ways to get started.
+
+### 1. Using your local Rust environment
+
+1. Install Rust. You can visit [Rust's official website](https://www.rust-lang.org/tools/install).
+2. Clone this repository.
+3. Now you can start this tutorial with the document in the `docs` directory!
+
+### 2. Using Docker
+
+1. Install Docker. The way is different in each OS, so you can search for `docker install (your OS)` to find out how to install.
+2. Clone this repository.
+3. Change directory to this repository.
+4. run `docker build .`.
+5. run `docker image ls` and note the image ID.
+6. run `docker run -it (image ID)`.
+7. Now you can start this tutorial with the document in the `docs` directory.
+
+### 3. Using Nix-Shell
+
+1. Install Nix. You can refer to [Nix's official website](https://nixos.org/download/)
+2. Clone this repository.
+3. Change directory to this repository.
+4. run `nix-shell`
+5. Now you can start this tutorial with the document in the `docs` directory!
+
+### 4. Using Nix Flake
+
+1. Install Nix. You can refer to [Nix's official website](https://nixos.org/download/)
+2. Clone this repository.
+3. Change directory to this repository.
+4. Add configuration. You can refer to [NixOS Wiki](https://nixos.wiki/wiki/Flakes)
+4. run `nix develop`
+5. Now you can start this tutorial with the document in the `docs` directory!

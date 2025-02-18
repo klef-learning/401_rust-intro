@@ -1,0 +1,37 @@
+let
+  skk-jisyo = builtins.fetchurl {
+    url = "https://github.com/skk-dev/dict/raw/refs/heads/master/SKK-JISYO.L";
+    sha256 = "sha256:090gl7vmhvvcr4mw8ghx2wl03g2w86zf9x3c4730nnhqwi2zr5p8";
+  };
+in
+final: prev: {
+  emacsForLecConfig = prev.writeText "default.el" ''
+    (load-theme 'catppuccin :no-confirm)
+    (setq skk-large-jisyo "${skk-jisyo}")
+    (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+    (org-babel-do-load-languages
+      'org-babel-load-languages
+      '(
+        (rust .t)
+      )
+    )
+    (require 'eglot)
+    (add-hook 'rust-mode-hook 'eglot-ensure)
+    (autoload 'rust-mode "rust-mode" nil t)
+    (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
+    (add-hook 'after-init-hook 'global-company-mode)
+  '';
+  emacsForLec = prev.emacs-nox.pkgs.withPackages (epkgs: (with epkgs.melpaStablePackages; [
+    (prev.runCommand "default.el" {} ''
+      mkdir -p $out/share/emacs/site-lisp
+      cp ${final.emacsForLecConfig} $out/share/emacs/site-lisp/default.el
+    '')
+    catppuccin-theme
+    rainbow-delimiters
+    ddskk
+    rust-mode
+    company
+    epkgs.ob-rust
+    epkgs.eglot
+  ]));
+}
