@@ -32,8 +32,8 @@
             rust-analyzer
 					];
 					shellHook = ''
-						emacs --daemon
-						echo "'Klef Learning | 401 Rust Introduction' Develop Environment is Activated"
+						alias ec="emacsclient -a ' '"
+						echo "Klef Learning '401 | rust introduction' Development Environment is Activated"
 					'';
 				};
 			}
