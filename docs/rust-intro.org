@@ -30,7 +30,7 @@ Emacserは上記事項に注意されたい。
 #+NAME: Hello, World!
 #+BEGIN_SRC rust
 fn main() {
-  println!("Hello, Rust!")
+  println!("Hello, World!")
 }
 #+END_SRC
 
@@ -39,6 +39,7 @@ fn main() {
 vということで、実行してみよう。
 
 #+RESULTS: Hello, World!
+: Hello, World!
 
 次は、 ~Hello, World!~ ではなく、 ~Hello, Rust~ を出力してみよう。
 

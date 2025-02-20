@@ -15,7 +15,7 @@
 			let
 				toolchain = fenix.packages.${system}.fromToolchainFile {
 					file = ./rust-toolchain.toml;
-					sha256 = "sha256-0Ww96eIhjM7rfKIAn79Gr591wG/QgwPzzcRMKD0r4gU=";
+					sha256 = "sha256-nNZazGjVyXzbNU9iafscySeqjeCypm70BChV7GHrcN0=";
 				};
         emacs-overlays = import ./overlay.nix;
         pkgs = import nixpkgs { inherit system; overlays = [emacs-overlays]; };
@@ -32,6 +32,7 @@
             rust-analyzer
 					];
 					shellHook = ''
+						emacs --daemon
 						echo "'Klef Learning | 401 Rust Introduction' Develop Environment is Activated"
 					'';
 				};
