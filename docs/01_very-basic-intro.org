@@ -1,8 +1,8 @@
-#+title:  Rust Introduction
+#+title:  Very Basic Introduction of Rust
 #+author: Klef Learning
-#+date:   2025.01.17
+#+date:   2025.02.26
 
-* Rust Intro
+* A Very Basic Introduction of Rust
 
 ** Introduction
 
@@ -57,19 +57,131 @@ fn main() {
 #+RESULTS: Hello, Rust!
 : Hello, World
 
+** 変数の扱い
+
+Rustにおいて、変数はデフォルトで =不変変数= である。
+可変にしたければ =mut= をつける。
+
+また、変数を ~println!~ マクロで表示するためには、以下のようにする。
+
+#+BEGIN_SRC rust
+  let str = "Hello, World";
+  let org = "Klef Learning";
+  let name = "Your Name";
+  println!("{}", str);
+  println!("Welcome to {}, {}", org, name);
+#+END_SRC
+
+次に、以下のコードの実行結果を確認せよ。
+
+#+BEGIN_SRC rust
+  let num = 1;
+  num = num + 2;
+  println!("number: {}", num);
+#+END_SRC
+
+#+BEGIN_SRC rust
+  let mut n = 1;
+  n = n + 2;
+  println!("number: {}", n)
+#+END_SRC
+
 ** FizzBuzz
 
 次に、FizzBuzz問題を解くプログラムを作成しよう。
 一般に、FizzBuzz問題をを解く際には =if= や =switch= が使われる。
 また、繰り返しには =for= や =while= が使われる。
-以下にC言語およびPythonにおける例を示す。
+以下にPython ( =if - else if= ) および JavaScript ( =switch= ) における例を示す。
 
 #+BEGIN_SRC python
-  for i in range(1,31):
+  i = 1
+  while (i < 31)
       if i % 15 == 0:
-	  print("FizzBuzz")
+  	  print("FizzBuzz")
+            i++
       else if i % 3 == 0:
-	  print("Fizz")
+  	  print("Fizz")
+            i++
       else if i % 5 == 0:
-	  print("Buzz")
+  	  print("Buzz")
+            i++
+      else:
+          print(i)
+#+END_SRC
+
+#+BEGIN_SRC javascript
+  for (let i = 1; i < 31; i++) {
+      case (i % 15 == 0):
+          console.log("FizzBuzz");
+          break;
+      case (i % 3 == 0):
+          console.log("Fizz");
+          break;
+      case (i % 5 == 0):
+          console.log("Buzz");
+          break;
+      default:
+          console.log(i);
+      }
+  }
+#+END_SRC
+
+Rustには、他の言語でいう ~switch~ に相当する ~match~ という構文がある。
+それを用いると、以下のように表すことができる。
+
+#+BEGIN_SRC rust
+  for i in 1 .. 31 {
+    match (i % 3, i % 5) {
+      (0, 0) => println!("FizzBuzz");
+      (0, _) => println!("Fizz");
+      (_, 0) => println!("Buzz");
+      _ => println!("{}", i);
+    };
+  };
+#+END_SRC
+
+** 関数
+
+Rustにおける関数定義は =fn= を用いる。引数あり、戻り値なしの関数を定義するには以下のようにする。
+
+#+BEGIN_SRC rust
+  fn fizzbuzz(n){
+    for i in 1 .. n + 1 {
+      match (i % 3, i % 5) {
+        (0, 0) => println!("FizzBuzz");
+        (0, _) => println!("Fizz");
+        (_, 0) => println!("Buzz");
+        _ => println!("{}", i);
+      };
+    };
+  }
+#+END_SRC
+
+** 課題
+
+-5以上の整数を引数をとり、以下のように処理する関数 =test= を =test.rs= 内に作成せよ。
+ただし、以下引数をnとする。
+
+- 負の数のときは"Minus"と表示
+- 0 のときは"Zero"と表示
+- 1 のときは"One"と表示
+- 2 のときは"Two"と表示
+- それ以外のときは引数を表示
+
+ただし、テストとして、ファイル内に以下の内容をコピーせよ
+
+#+BEGIN_SRC rust
+  fn main() {
+    test(-2);
+    test(0);
+    test(1);
+    test(2);
+    test(10);
+  }
+#+END_SRC
+
+なお、ファイルに書いたプログラムは以下のコマンドで実行できる。
+
+#+BEGIN_SRC rust
+  cargo run --bin test
 #+END_SRC
