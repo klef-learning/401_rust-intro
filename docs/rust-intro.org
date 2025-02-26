@@ -1,0 +1,75 @@
+#+title:  Rust Introduction
+#+author: Klef Learning
+#+date:   2025.01.17
+
+* Rust Intro
+
+** Introduction
+
+Rustは高速かつ安全なコードを記述することができる比較的新しい言語である。
+また、RustのパッケージマネージャーであるCargoは非常に優秀であり、行儀もいい。
+一方で、良くも悪くもRust最大の特徴といえるのが、「所有権」の概念である。これは後程詳述する。
+この所有権とセットの概念で、「参照」や「ライフタイム」といった初心者の心を折るような用語が並ぶこととなる。
+このように、C/C++の煩雑さと引き換えに、シンプルで明瞭だがそれを意識したコーディングが難しい概念が導入されているのがRust言語である。
+
+本資料は付属のNix Flakesによって提供される環境内でEmacsを利用することを前提に作成されている。
+その他のリーダーや環境を用いた場合については、操作が異なることに注意されたい。
+また、すでにローカル環境にEmacsがインストールされており、init.elなどでカスタマイズされている場合において、こちらでカスタマイズしたEmacsの設定ではなく、ローカル環境の設定が優先されることが報告されている。
+Emacserは上記事項に注意されたい。
+
+なお、 =nix develop -i= で実行すれば動作することも報告されているため、適宜そちらも利用することを推奨する。
+
+** Hello World
+
+何はともあれ、触ってみないことには何もいえないので、とりあえず ~Hello, World!~ を出力してみよう。
+=println!()= マクロ(関数ではない)を用いると出力できる。引数は =str= 型となる。
+
+また、Rustも多くのC言語派生言語と同様、 =main= 関数が必要である。関数定義は =fn= でできる。
+よって、 ~Hello, World!~ を出力するためには、以下のコードを書けばよい。
+
+#+NAME: Hello, World!
+#+BEGIN_SRC rust
+fn main() {
+  println!("Hello, World!")
+}
+#+END_SRC
+
+ここで、コード内にカーソル(厳密にはキャレットだが)がある状態で、C-c C-c (Ctrlキーを押しながらCキーを2回押す)で、下の #+RESULTS:と書かれたところに実行結果が出力される。
+これは、Emacsが提供する「Org Babel」という機能である。大変に便利であり、私はこれがやりたいがためにEmacsを採用した。
+vということで、実行してみよう。
+
+#+RESULTS: Hello, World!
+: Hello, World!
+
+次は、 ~Hello, World!~ ではなく、 ~Hello, Rust~ を出力してみよう。
+
+以下に、Hello, World!のときのプログラムを記載しておくため、必要箇所を変更し実行せよ。
+
+#+NAME: Hello, Rust!
+#+BEGIN_SRC rust
+fn main() {
+  println!("Hello, World")
+}
+#+END_SRC
+
+なお、実行結果が変化する場合、RESULTは更新されるため、削除する必要はない。
+
+#+RESULTS: Hello, Rust!
+: Hello, World
+
+** FizzBuzz
+
+次に、FizzBuzz問題を解くプログラムを作成しよう。
+一般に、FizzBuzz問題をを解く際には =if= や =switch= が使われる。
+また、繰り返しには =for= や =while= が使われる。
+以下にC言語およびPythonにおける例を示す。
+
+#+BEGIN_SRC python
+  for i in range(1,31):
+      if i % 15 == 0:
+	  print("FizzBuzz")
+      else if i % 3 == 0:
+	  print("Fizz")
+      else if i % 5 == 0:
+	  print("Buzz")
+#+END_SRC
