@@ -99,10 +99,10 @@ Rustにおいて、変数はデフォルトで =不変変数= である。
       if i % 15 == 0:
   	  print("FizzBuzz")
             i++
-      else if i % 3 == 0:
+      elif i % 3 == 0:
   	  print("Fizz")
             i++
-      else if i % 5 == 0:
+      elif i % 5 == 0:
   	  print("Buzz")
             i++
       else:
@@ -132,10 +132,10 @@ Rustには、他の言語でいう ~switch~ に相当する ~match~ という構
 #+BEGIN_SRC rust
   for i in 1 .. 31 {
     match (i % 3, i % 5) {
-      (0, 0) => println!("FizzBuzz");
-      (0, _) => println!("Fizz");
-      (_, 0) => println!("Buzz");
-      _ => println!("{}", i);
+      (0, 0) => println!("FizzBuzz"),
+      (0, _) => println!("Fizz"),
+      (_, 0) => println!("Buzz"),
+      _ => println!("{}", i)
     };
   };
 #+END_SRC
@@ -145,13 +145,13 @@ Rustには、他の言語でいう ~switch~ に相当する ~match~ という構
 Rustにおける関数定義は =fn= を用いる。引数あり、戻り値なしの関数を定義するには以下のようにする。
 
 #+BEGIN_SRC rust
-  fn fizzbuzz(n){
+  fn fizzbuzz(n: i8){
     for i in 1 .. n + 1 {
       match (i % 3, i % 5) {
-        (0, 0) => println!("FizzBuzz");
-        (0, _) => println!("Fizz");
-        (_, 0) => println!("Buzz");
-        _ => println!("{}", i);
+        (0, 0) => println!("FizzBuzz"),
+        (0, _) => println!("Fizz"),
+        (_, 0) => println!("Buzz"),
+        _ => println!("{}", i)
       };
     };
   }
