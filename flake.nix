@@ -15,7 +15,7 @@
 			let
 				toolchain = fenix.packages.${system}.fromToolchainFile {
 					file = ./rust-toolchain.toml;
-					sha256 = "sha256-nNZazGjVyXzbNU9iafscySeqjeCypm70BChV7GHrcN0=";
+					sha256 = "sha256-OCuspgT6r4QHQ3sLl1AxnjTr6+r2VcsOMk8yF0AcDQw=";
 				};
         emacs-overlays = import ./overlay.nix;
         pkgs = import nixpkgs { inherit system; overlays = [emacs-overlays]; };
